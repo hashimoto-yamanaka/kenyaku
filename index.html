@@ -11,274 +11,67 @@
     --green-mid: #2d6e56;
     --green-light: #4a9e7e;
     --green-pale: #e8f5f0;
-    --gold: #c9a84c;
     --gold-light: #f0e0a0;
     --cream: #faf8f3;
     --text-dark: #1a1a1a;
     --text-mid: #4a4a4a;
     --text-light: #888;
   }
-
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    font-family: 'Noto Sans JP', sans-serif;
-    background: var(--cream);
-    color: var(--text-dark);
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  body::before {
-    content: '';
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background:
-      radial-gradient(ellipse at 10% 20%, rgba(74,158,126,0.08) 0%, transparent 50%),
-      radial-gradient(ellipse at 90% 80%, rgba(201,168,76,0.06) 0%, transparent 50%);
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  .container {
-    width: 100%;
-    max-width: 560px;
-    padding: 0 20px 60px;
-    position: relative;
-    z-index: 1;
-  }
-
-  .header {
-    text-align: center;
-    padding: 48px 0 36px;
-  }
-
-  .header-badge {
-    display: inline-block;
-    background: var(--green-deep);
-    color: var(--gold-light);
-    font-family: 'Noto Serif JP', serif;
-    font-size: 11px;
-    letter-spacing: 0.15em;
-    padding: 6px 18px;
-    border-radius: 2px;
-    margin-bottom: 20px;
-  }
-
-  .header h1 {
-    font-family: 'Noto Serif JP', serif;
-    font-size: 26px;
-    font-weight: 700;
-    color: var(--green-deep);
-    line-height: 1.5;
-    margin-bottom: 12px;
-  }
-
-  .header p {
-    font-size: 13px;
-    color: var(--text-mid);
-    line-height: 1.8;
-  }
-
-  .divider {
-    width: 48px;
-    height: 2px;
-    background: linear-gradient(90deg, var(--gold), var(--green-light));
-    margin: 20px auto;
-    border-radius: 2px;
-  }
-
-  .card {
-    background: white;
-    border-radius: 16px;
-    padding: 36px 32px;
-    box-shadow: 0 4px 24px rgba(26,74,58,0.08), 0 1px 4px rgba(0,0,0,0.04);
-    border: 1px solid rgba(74,158,126,0.1);
-    animation: fadeUp 0.4s ease both;
-  }
-
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(16px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
+  body { font-family: 'Noto Sans JP', sans-serif; background: var(--cream); color: var(--text-dark); min-height: 100vh; display: flex; flex-direction: column; align-items: center; }
+  body::before { content: ''; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(ellipse at 10% 20%, rgba(74,158,126,0.08) 0%, transparent 50%), radial-gradient(ellipse at 90% 80%, rgba(201,168,76,0.06) 0%, transparent 50%); pointer-events: none; z-index: 0; }
+  .container { width: 100%; max-width: 560px; padding: 0 20px 60px; position: relative; z-index: 1; }
+  .header { text-align: center; padding: 48px 0 36px; }
+  .header-badge { display: inline-block; background: var(--green-deep); color: var(--gold-light); font-family: 'Noto Serif JP', serif; font-size: 11px; letter-spacing: 0.15em; padding: 6px 18px; border-radius: 2px; margin-bottom: 20px; }
+  .header h1 { font-family: 'Noto Serif JP', serif; font-size: 26px; font-weight: 700; color: var(--green-deep); line-height: 1.5; margin-bottom: 12px; }
+  .header p { font-size: 13px; color: var(--text-mid); line-height: 1.8; }
+  .divider { width: 48px; height: 2px; background: linear-gradient(90deg, #c9a84c, var(--green-light)); margin: 20px auto; border-radius: 2px; }
+  .card { background: white; border-radius: 16px; padding: 36px 32px; box-shadow: 0 4px 24px rgba(26,74,58,0.08), 0 1px 4px rgba(0,0,0,0.04); border: 1px solid rgba(74,158,126,0.1); animation: fadeUp 0.4s ease both; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
   .progress-wrap { margin-bottom: 28px; }
-
-  .progress-label {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 8px;
-  }
-
+  .progress-label { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
   .progress-label span { font-size: 11px; color: var(--text-light); letter-spacing: 0.05em; }
   .progress-label .step-num { font-family: 'Noto Serif JP', serif; font-size: 13px; color: var(--green-mid); font-weight: 600; }
-
   .progress-bar { height: 4px; background: var(--green-pale); border-radius: 4px; overflow: hidden; }
-  .progress-fill {
-    height: 100%;
-    background: linear-gradient(90deg, var(--green-mid), var(--green-light));
-    border-radius: 4px;
-    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .question {
-    font-family: 'Noto Serif JP', serif;
-    font-size: 17px;
-    font-weight: 600;
-    color: var(--text-dark);
-    line-height: 1.7;
-    margin-bottom: 28px;
-  }
-
+  .progress-fill { height: 100%; background: linear-gradient(90deg, var(--green-mid), var(--green-light)); border-radius: 4px; transition: width 0.5s cubic-bezier(0.4,0,0.2,1); }
+  .question { font-family: 'Noto Serif JP', serif; font-size: 17px; font-weight: 600; color: var(--text-dark); line-height: 1.7; margin-bottom: 28px; }
   .btn-group { display: flex; flex-direction: column; gap: 12px; }
-
-  .btn {
-    width: 100%;
-    padding: 16px 24px;
-    border: 2px solid var(--green-pale);
-    border-radius: 10px;
-    background: white;
-    font-family: 'Noto Sans JP', sans-serif;
-    font-size: 15px;
-    font-weight: 500;
-    color: var(--text-dark);
-    cursor: pointer;
-    text-align: left;
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    transition: all 0.2s ease;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .btn::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: var(--green-pale);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.25s ease;
-    z-index: 0;
-  }
-
+  .btn { width: 100%; padding: 16px 24px; border: 2px solid var(--green-pale); border-radius: 10px; background: white; font-family: 'Noto Sans JP', sans-serif; font-size: 15px; font-weight: 500; color: var(--text-dark); cursor: pointer; text-align: left; display: flex; align-items: center; gap: 14px; transition: all 0.2s ease; position: relative; overflow: hidden; }
+  .btn::before { content: ''; position: absolute; inset: 0; background: var(--green-pale); transform: scaleX(0); transform-origin: left; transition: transform 0.25s ease; z-index: 0; }
   .btn:hover::before { transform: scaleX(1); }
   .btn:hover { border-color: var(--green-light); color: var(--green-deep); }
   .btn:active { transform: scale(0.98); }
   .btn span { position: relative; z-index: 1; }
-
-  .btn-icon {
-    width: 32px; height: 32px;
-    border-radius: 50%;
-    background: var(--green-pale);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 14px; flex-shrink: 0;
-    position: relative; z-index: 1;
-    transition: background 0.2s;
-  }
+  .btn-icon { width: 32px; height: 32px; border-radius: 50%; background: var(--green-pale); display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; position: relative; z-index: 1; transition: background 0.2s; }
   .btn:hover .btn-icon { background: white; }
-
   .btn-group-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
   .btn-row { padding: 16px; text-align: center; justify-content: center; }
-
-  /* 結果画面 */
   .result-header { text-align: center; margin-bottom: 28px; }
-
-  .result-icon {
-    width: 64px; height: 64px;
-    background: linear-gradient(135deg, var(--green-mid), var(--green-light));
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    margin: 0 auto 16px;
-    font-size: 28px;
-    box-shadow: 0 8px 24px rgba(45,110,86,0.25);
-  }
-
+  .result-icon { width: 64px; height: 64px; background: linear-gradient(135deg, var(--green-mid), var(--green-light)); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; font-size: 28px; box-shadow: 0 8px 24px rgba(45,110,86,0.25); }
   .result-title { font-family: 'Noto Serif JP', serif; font-size: 20px; font-weight: 700; color: var(--green-deep); margin-bottom: 8px; }
   .result-subtitle { font-size: 12px; color: var(--text-light); letter-spacing: 0.08em; }
-
-  .result-body {
-    background: var(--green-pale);
-    border-radius: 12px;
-    padding: 24px;
-    margin-bottom: 20px;
-    border-left: 3px solid var(--green-mid);
-  }
+  .result-body { background: var(--green-pale); border-radius: 12px; padding: 24px; margin-bottom: 20px; border-left: 3px solid var(--green-mid); }
   .result-body p { font-size: 14px; line-height: 1.9; color: var(--text-mid); }
-
-  .case-box {
-    background: linear-gradient(135deg, var(--green-deep) 0%, var(--green-mid) 100%);
-    border-radius: 12px;
-    padding: 24px;
-    margin-bottom: 20px;
-    color: white;
-    text-align: center;
-  }
-
+  .case-box { background: linear-gradient(135deg, var(--green-deep) 0%, var(--green-mid) 100%); border-radius: 12px; padding: 24px; margin-bottom: 20px; color: white; text-align: center; }
   .case-label { font-size: 11px; letter-spacing: 0.15em; color: rgba(255,255,255,0.7); margin-bottom: 16px; }
-
   .case-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-
   .case-stat { background: rgba(255,255,255,0.1); border-radius: 8px; padding: 16px 12px; }
   .case-stat-label { font-size: 11px; color: var(--gold-light); margin-bottom: 6px; letter-spacing: 0.05em; }
   .case-stat-value { font-family: 'Noto Serif JP', serif; font-size: 22px; font-weight: 700; color: white; }
   .case-stat-unit { font-size: 12px; color: rgba(255,255,255,0.8); margin-top: 2px; }
-
-  .cta-btn {
-    display: block; width: 100%;
-    padding: 18px 24px;
-    background: linear-gradient(135deg, var(--green-deep), var(--green-mid));
-    color: white; text-decoration: none;
-    border-radius: 10px; text-align: center;
-    font-size: 15px; font-weight: 500; letter-spacing: 0.05em;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 16px rgba(26,74,58,0.3);
-    margin-bottom: 12px;
-    border: none; cursor: pointer;
-    font-family: 'Noto Sans JP', sans-serif;
-  }
+  .cta-btn { display: block; width: 100%; padding: 18px 24px; background: linear-gradient(135deg, var(--green-deep), var(--green-mid)); color: white; text-decoration: none; border-radius: 10px; text-align: center; font-size: 15px; font-weight: 500; letter-spacing: 0.05em; transition: all 0.3s ease; box-shadow: 0 4px 16px rgba(26,74,58,0.3); margin-bottom: 12px; border: none; cursor: pointer; font-family: 'Noto Sans JP', sans-serif; }
   .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(26,74,58,0.4); }
-
-  .cta-btn-sub {
-    display: block; width: 100%;
-    padding: 14px 24px;
-    background: white; color: var(--green-mid);
-    border: 2px solid var(--green-light);
-    border-radius: 10px; text-align: center;
-    font-size: 14px; cursor: pointer;
-    font-family: 'Noto Sans JP', sans-serif;
-    transition: all 0.2s ease;
-  }
+  .cta-btn-sub { display: block; width: 100%; padding: 14px 24px; background: white; color: var(--green-mid); border: 2px solid var(--green-light); border-radius: 10px; text-align: center; font-size: 14px; cursor: pointer; font-family: 'Noto Sans JP', sans-serif; transition: all 0.2s ease; }
   .cta-btn-sub:hover { background: var(--green-pale); }
-
   .footer { text-align: center; padding: 32px 0; font-size: 11px; color: var(--text-light); letter-spacing: 0.05em; }
-
   .start-card { text-align: center; }
   .start-desc { font-size: 13px; color: var(--text-mid); line-height: 1.9; margin-bottom: 32px; text-align: left; }
   .start-desc li { list-style: none; padding: 6px 0 6px 20px; position: relative; }
   .start-desc li::before { content: '✓'; position: absolute; left: 0; color: var(--green-light); font-size: 12px; }
-
-  .start-btn {
-    display: block; width: 100%; padding: 20px;
-    background: linear-gradient(135deg, var(--green-deep), var(--green-mid));
-    color: white; border: none; border-radius: 12px;
-    font-family: 'Noto Serif JP', serif; font-size: 17px; font-weight: 600;
-    cursor: pointer; letter-spacing: 0.1em;
-    box-shadow: 0 6px 20px rgba(26,74,58,0.3);
-    transition: all 0.3s ease;
-  }
+  .start-btn { display: block; width: 100%; padding: 20px; background: linear-gradient(135deg, var(--green-deep), var(--green-mid)); color: white; border: none; border-radius: 12px; font-family: 'Noto Serif JP', serif; font-size: 17px; font-weight: 600; cursor: pointer; letter-spacing: 0.1em; box-shadow: 0 6px 20px rgba(26,74,58,0.3); transition: all 0.3s ease; }
   .start-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(26,74,58,0.4); }
   .time-note { font-size: 11px; color: var(--text-light); margin-top: 12px; letter-spacing: 0.05em; }
-
-  @media (max-width: 400px) {
-    .card { padding: 28px 20px; }
-    .header h1 { font-size: 22px; }
-    .question { font-size: 15px; }
-  }
+  @media (max-width: 400px) { .card { padding: 28px 20px; } .header h1 { font-size: 22px; } .question { font-size: 15px; } }
 </style>
 </head>
 <body>
@@ -295,33 +88,70 @@
 
 <script>
 const RESULT_URL = 'https://www.hashimoto.or.jp/hashimoto-medical-service/';
-const state = { step: 'start', q1: null, q2: null, q3: null, q4: null, q5: null };
-const totalSteps = 5;
 
-function getProgressStep() {
-  return { Q1:1, Q2:2, Q3:3, Q4:4, Q5:5 }[state.step] || 0;
-}
+const RESULTS = {
+  A1:  { refund: '約60万円',     annual: '約12万円' },
+  A2:  { refund: '約110万円',    annual: '約22万円' },
+  A3:  { refund: '約160万円',    annual: '約32万円' },
+  A4:  { refund: '約40万円',     annual: '約8万円'  },
+  A5:  { refund: '約70万円',     annual: '約14万円' },
+  A6:  { refund: '約100万円',    annual: '約20万円' },
+  A7:  { refund: '約30万円',     annual: '約6万円'  },
+  A8:  { refund: '約50万円',     annual: '約10万円' },
+  A9:  { refund: '約70万円',     annual: '約14万円' },
+  A10: { refund: '約20万円',     annual: '約4万円'  }, // Q8いいえ→Q9いいえ→A14ルートでは未使用。Q13低収入と同値
+  A11: { refund: '約40万円',     annual: '約8万円'  },
+  A12: { refund: '約60万円',     annual: '約12万円' },
+  A13: { refund: '約20〜60万円', annual: '約4〜12万円' },
+  A14: null,
+};
 
-function progressHTML() {
-  const step = getProgressStep();
-  const pct = (step / totalSteps) * 100;
-  return `
-    <div class="progress-wrap">
-      <div class="progress-label">
-        <span>QUESTION</span>
-        <span class="step-num">${step} / ${totalSteps}</span>
-      </div>
-      <div class="progress-bar"><div class="progress-fill" style="width:${pct}%"></div></div>
-    </div>`;
-}
+const QUESTIONS = {
+  Q1:  'あなたのご家族に要介護認定を受けている方はいますか？',
+  Q2:  '要介護認定を受けたご家族と同居していますか？',
+  Q3:  'あなたのご両親（または義両親）の年金額はそれぞれ年158万円以下ですか？',
+  Q4:  'あなたの年収はいくらですか？',
+  Q5:  '要介護認定を受けたご家族に物質的または金銭的な支援を行っていますか？',
+  Q6:  'あなたのご両親（または義両親）の年金額はそれぞれ年158万円以下ですか？',
+  Q7:  'あなたの年収はいくらですか？',
+  Q8:  'あなたご自身のご両親（または義両親）と同居していますか？',
+  Q9:  'あなたのご両親（または義両親）の年金額はそれぞれ年158万円以下ですか？',
+  Q10: 'あなたの年収はいくらですか？',
+  Q11: 'あなたのご両親（または義両親）の年金額はそれぞれ年158万円以下ですか？',
+  Q12: 'あなたのご両親（または義両親）に物質的または金銭的な支援を行っていますか？',
+  Q13: 'あなたの年収はいくらですか？',
+};
 
-function yesNo(q, nextYes, nextNo) {
-  return `
-    <div class="btn-group btn-group-row">
-      <button class="btn btn-row" onclick="answer('${q}', true, '${nextYes}')"><span>はい</span></button>
-      <button class="btn btn-row" onclick="answer('${q}', false, '${nextNo}')"><span>いいえ</span></button>
-    </div>`;
-}
+// はい/いいえ分岐
+const YESNO_FLOW = {
+  Q1:  { yes: 'Q2',  no:  'Q8'  },
+  Q2:  { yes: 'Q3',  no:  'Q5'  },
+  Q3:  { yes: 'Q4',  no:  'A13' },
+  Q5:  { yes: 'Q6',  no:  'A13' },
+  Q6:  { yes: 'Q7',  no:  'A13' },
+  Q8:  { yes: 'Q9',  no:  'Q11' },
+  Q9:  { yes: 'Q10', no:  'A14' },
+  Q11: { yes: 'Q12', no:  'A14' },
+  Q12: { yes: 'Q13', no:  'A14' },
+};
+
+// 年収分岐
+const INCOME_FLOW = {
+  Q4:  { low: 'A1',  mid: 'A2',  high: 'A3'  },
+  Q7:  { low: 'A4',  mid: 'A5',  high: 'A6'  },
+  Q10: { low: 'A7',  mid: 'A8',  high: 'A9'  },
+  Q13: { low: 'A10', mid: 'A11', high: 'A12' },
+};
+
+// プログレス表示用ステップ番号（ルートごとに最大5ステップ）
+const STEP_NUM = {
+  Q1:1, Q2:2, Q3:3, Q4:4, Q5:3, Q6:4, Q7:5,
+  Q8:2, Q9:3, Q10:4, Q11:3, Q12:4, Q13:5,
+};
+
+const INCOME_STEPS = new Set(['Q4','Q7','Q10','Q13']);
+
+const state = { step: 'start' };
 
 function render() {
   const screen = document.getElementById('screen');
@@ -330,80 +160,86 @@ function render() {
     screen.innerHTML = `
       <div class="card start-card">
         <ul class="start-desc">
-          <li>ご家族の介護状況に関する5つの質問です</li>
-          <li>所要時間は約1〜2分です</li>
+          <li>ご家族の介護・生活状況に関する質問です</li>
+          <li>所要時間は約2〜3分です</li>
           <li>回答に応じて最適な情報をご案内します</li>
         </ul>
         <button class="start-btn" onclick="goTo('Q1')">診断をはじめる</button>
-        <p class="time-note">約1〜2分で完了します</p>
+        <p class="time-note">約2〜3分で完了します</p>
       </div>`;
     return;
   }
 
-  if (state.step === 'result') { renderResult(screen); return; }
+  if (state.step.startsWith('A')) {
+    renderResult(screen);
+    return;
+  }
 
-  const questions = {
-    Q1: { text: 'あなたのご家族に要介護認定を受けている方はいますか？', html: yesNo('q1','Q3','Q2') },
-    Q2: { text: 'あなたのご両親（または義両親）と同居していますか？', html: yesNo('q2','Q3','Q3') },
-    Q3: { text: 'あなたは要介護認定を受けたご家族と同居していますか？', html: yesNo('q3','Q4','Q4') },
-    Q4: { text: 'ご両親（または義両親）の年金額はそれぞれ年158万円以下ですか？', html: yesNo('q4','Q5','result') },
-    Q5: {
-      text: 'あなたの年収はいくらですか？',
-      html: `
-        <div class="btn-group">
-          <button class="btn" onclick="answer('q5','500万円以下','result')">
-            <div class="btn-icon"><span>①</span></div><span>500万円以下</span>
-          </button>
-          <button class="btn" onclick="answer('q5','501〜800万円','result')">
-            <div class="btn-icon"><span>②</span></div><span>501万円〜800万円</span>
-          </button>
-          <button class="btn" onclick="answer('q5','801万円以上','result')">
-            <div class="btn-icon"><span>③</span></div><span>801万円以上</span>
-          </button>
-        </div>`
-    }
-  };
+  const step = state.step;
+  const num = STEP_NUM[step] || 1;
+  const pct = (num / 5) * 100;
 
-  const q = questions[state.step];
+  const progressHTML = `
+    <div class="progress-wrap">
+      <div class="progress-label">
+        <span>QUESTION</span>
+        <span class="step-num">${num} / 5</span>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" style="width:${pct}%"></div></div>
+    </div>`;
+
+  let btnHTML = '';
+  if (INCOME_STEPS.has(step)) {
+    btnHTML = `
+      <div class="btn-group">
+        <button class="btn" onclick="answerIncome('low')">
+          <div class="btn-icon"><span>①</span></div><span>〜500万円</span>
+        </button>
+        <button class="btn" onclick="answerIncome('mid')">
+          <div class="btn-icon"><span>②</span></div><span>500万円〜800万円</span>
+        </button>
+        <button class="btn" onclick="answerIncome('high')">
+          <div class="btn-icon"><span>③</span></div><span>801万円〜</span>
+        </button>
+      </div>`;
+  } else {
+    btnHTML = `
+      <div class="btn-group btn-group-row">
+        <button class="btn btn-row" onclick="answerYesNo('yes')"><span>はい</span></button>
+        <button class="btn btn-row" onclick="answerYesNo('no')"><span>いいえ</span></button>
+      </div>`;
+  }
+
   screen.innerHTML = `
     <div class="card">
-      ${progressHTML()}
-      <div class="question">${q.text}</div>
-      ${q.html}
+      ${progressHTML}
+      <div class="question">${QUESTIONS[step]}</div>
+      ${btnHTML}
     </div>`;
 }
 
 function renderResult(screen) {
-  let bodyText = '';
-  let caseHTML = '';
+  const data = RESULTS[state.step];
+  const bodyHTML = data
+    ? `<p>あなたと似た過去の事例で...</p>`
+    : `<p>今後に備えるために賢約サポート診断をしてみましょう。<br>将来の負担軽減や見直すタイミングが見つかるかも。</p>`;
 
-  if (!state.q4) {
-    bodyText = '今後にそなえるために賢約サポート診断をしてみましょう。<br>将来の負担軽減や見直すタイミングが見つかるかも。';
-  } else {
-    const cases = {
-      '500万円以下': { refund: '約60万円', annual: '約12万円' },
-      '501〜800万円': { refund: '約110万円', annual: '約22万円' },
-      '801万円以上': { refund: '約160万円', annual: '約32万円' },
-    };
-    const c = cases[state.q5];
-    bodyText = 'あなたと似た過去の事例で...';
-    caseHTML = `
-      <div class="case-box">
-        <div class="case-label">CASE STUDY｜過去の事例</div>
-        <div class="case-stats">
-          <div class="case-stat">
-            <div class="case-stat-label">還付金受領</div>
-            <div class="case-stat-value">${c.refund}</div>
-            <div class="case-stat-unit">受け取れた実績</div>
-          </div>
-          <div class="case-stat">
-            <div class="case-stat-label">年間削減</div>
-            <div class="case-stat-value">${c.annual}</div>
-            <div class="case-stat-unit">コスト削減実績</div>
-          </div>
+  const caseHTML = data ? `
+    <div class="case-box">
+      <div class="case-label">CASE STUDY｜過去の事例</div>
+      <div class="case-stats">
+        <div class="case-stat">
+          <div class="case-stat-label">還付金受領</div>
+          <div class="case-stat-value">${data.refund}</div>
+          <div class="case-stat-unit">受け取れた実績</div>
         </div>
-      </div>`;
-  }
+        <div class="case-stat">
+          <div class="case-stat-label">年間削減</div>
+          <div class="case-stat-value">${data.annual}</div>
+          <div class="case-stat-unit">コスト削減実績</div>
+        </div>
+      </div>
+    </div>` : '';
 
   screen.innerHTML = `
     <div class="card">
@@ -412,16 +248,19 @@ function renderResult(screen) {
         <div class="result-title">診断結果</div>
         <div class="result-subtitle">あなたの状況に合わせたご提案</div>
       </div>
-      <div class="result-body"><p>${bodyText}</p></div>
+      <div class="result-body">${bodyHTML}</div>
       ${caseHTML}
       <a href="${RESULT_URL}" target="_blank" class="cta-btn">詳しく見る →</a>
       <button class="cta-btn-sub" onclick="restart()">もう一度診断する</button>
     </div>`;
 }
 
-function answer(key, value, next) {
-  state[key] = value;
-  goTo(next);
+function answerYesNo(ans) {
+  goTo(YESNO_FLOW[state.step]?.[ans] || 'A14');
+}
+
+function answerIncome(level) {
+  goTo(INCOME_FLOW[state.step]?.[level] || 'A14');
 }
 
 function goTo(step) {
@@ -431,7 +270,7 @@ function goTo(step) {
 }
 
 function restart() {
-  Object.assign(state, { step: 'start', q1: null, q2: null, q3: null, q4: null, q5: null });
+  state.step = 'start';
   render();
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
